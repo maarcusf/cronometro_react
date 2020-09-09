@@ -34,9 +34,14 @@ constructor(props){
 
     limpar(){
         let state = this.state;
-        state.numero = 0;
-        
+        state.numero = 0;        
         this.setState(state);
+
+        if(this.timer !== null){
+            clearInterval(this.timer);
+            this.timer = null;
+            state.estadoBotao = 'Iniciar';                        
+        }
     }
 
     render() {
@@ -46,7 +51,7 @@ constructor(props){
                 <a className="timer">{this.state.numero.toFixed(1)}</a>
                 <div className="areaBtn">
                     <a className="botao" onClick={this.vai}>{this.state.estadoBotao}</a>
-                    <a className="botao" onClick={this.limpar}>LIMPAR</a>
+                    <a className="botao" onClick={this.limpar}>Limpar</a>
                 </div>
             </div>
         );
